@@ -35,6 +35,21 @@ class GenusController extends Controller
         return new Response('<html><body>Genus Created</html></body>');
     }
 
+    /**
+     * @Route("/genus")
+     */
+    public function listAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $genuses = $em->getRepository('AppBundle:Genus')
+            ->findAll();
+
+        return $this->render('genus/list.html.twig',[
+           'genuses' => $genuses,
+        ]);
+
+    }
+
 
     /**
      * @Route("/genus/{genusName}")
