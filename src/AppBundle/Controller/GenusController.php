@@ -25,6 +25,8 @@ class GenusController extends Controller
     {
         $genus = new Genus();
         $genus->setName('Octopus'. rand(10,100));
+        $genus->setSubFamily('Octopodinae');
+        $genus->setSpeciesCount(rand(10,99999));
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($genus);
