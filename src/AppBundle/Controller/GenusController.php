@@ -90,8 +90,12 @@ class GenusController extends Controller
         $this->get('logger')
             ->info('Showing genus:'.$genusName);
 
+        $recentNotes = $em->getRepository('AppBundle:GenusNote')
+            ->findAllRecentNotesForGenus($genus);
+
         return $this->render('genus/show.html.twig',[
-            'genus' => $genus
+            'genus' => $genus,
+            'recentNoteCount' => count($recentNotes)
         ]);
 
     }
