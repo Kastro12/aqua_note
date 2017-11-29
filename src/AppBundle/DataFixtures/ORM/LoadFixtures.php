@@ -47,4 +47,27 @@ class LoadFixtures extends Fixture
         return $genera[$key];
     }
 
+    public function subfamily()
+    {
+        $subfamilies = [
+            'Pera zdera',
+            'Miki maus',
+            'Patrik zvezda',
+            'Vitez koja',
+            'Fred kremenko',
+            'Barni kameniko',
+            'Iznogud',
+            'Splinter',
+            'Tom i dzeri',
+            'Paja patak',
+            'Popaj',
+            'Herkules'
+        ];
+
+        $key = array_rand($subfamilies);
+
+        return $subfamilies[$key];
+
+    }
+
 }

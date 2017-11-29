@@ -31,7 +31,8 @@ class Genus
     private $name;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\SubFamily")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $subFamily;
 
@@ -55,6 +56,11 @@ class Genus
      * @ORM\OrderBy({"createdAt"="DESC"})
      */
     private $notes;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $firstDiscoveredAt;
 
     public function __construct()
     {
@@ -88,7 +94,7 @@ class Genus
     /**
      * @param mixed $subFamily
      */
-    public function setSubFamily($subFamily)
+    public function setSubFamily(SubFamily $subFamily)
     {
         $this->subFamily = $subFamily;
     }
@@ -144,6 +150,22 @@ class Genus
     public function getNotes()
     {
         return $this->notes;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFirstDiscoveredAt()
+    {
+        return $this->firstDiscoveredAt;
+    }
+
+    /**
+     * @param mixed $firstDiscoveredAt
+     */
+    public function setFirstDiscoveredAt(\DateTime $firstDiscoveredAt = null)
+    {
+        $this->firstDiscoveredAt = $firstDiscoveredAt;
     }
 
 
